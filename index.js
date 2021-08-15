@@ -130,9 +130,3 @@ function clickHandler(){
 }
 
 btnCheck.addEventListener("click", clickHandler);
-
-// var date = {
-//     day : 1,
-//     month : 1,
-//     year : 2000
-// }
