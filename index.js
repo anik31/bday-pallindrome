@@ -127,6 +127,9 @@ function clickHandler(){
             outputImg.src = "/images/sad.svg";
         }
     }
+    else{
+        output.innerText = "Please enter your birthdate to continue.";
+    }
 }
 
 btnCheck.addEventListener("click", clickHandler);
