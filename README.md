@@ -8,7 +8,7 @@ A VanillaJS app to check whether your birthday is pallindrome or not.
 * JavaScript
 
 ## Features
-1. Empty string validation.
+1. Empty input validation.
 2. Output image based on the result.
 3. High use of functional programming.
 4. Check for nearest pallindrome date if birthdate is not pallindrome.
