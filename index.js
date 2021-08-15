@@ -1,6 +1,7 @@
 const dob = document.querySelector("#dob");
 const btnCheck = document.querySelector("#btn-check");
 const output = document.querySelector("#output");
+const outputImg = document.querySelector("#output-img");
 
 function strReverse(strVar){
     return strVar.split("").reverse().join("");
@@ -109,7 +110,6 @@ function nextPallindrome(date){
 }
 
 function clickHandler(){
-    console.log(dob.value)
     if (dob.value != ""){
         var dateSplit = dob.value.split("-");
         var date = {
@@ -118,11 +118,13 @@ function clickHandler(){
             year : Number(dateSplit[0])
         }
         if (checkPallindromeAllFormats(date)){
-            output.innerText = "Yay!! Your bday is pallindrome";
+            output.innerText = "🥳 Yay!! Your bday is pallindrome 🥳";
+            outputImg.src = "/images/happy.svg";
         }
         else{
             var nextPallindromeDate = nextPallindrome(date);
-            output.innerText = `Oops!! your bday is not pallindrome. The next pallindrome date is ${nextPallindromeDate.nextDate.day}-${nextPallindromeDate.nextDate.month}-${nextPallindromeDate.nextDate.year}. You missed it by ${nextPallindromeDate.count} days.`
+            output.innerText = `😐 Oops!! your bday is not pallindrome. The next pallindrome date is ${nextPallindromeDate.nextDate.day}-${nextPallindromeDate.nextDate.month}-${nextPallindromeDate.nextDate.year}. You missed it by ${nextPallindromeDate.count} days. 😐`
+            outputImg.src = "/images/sad.svg";
         }
     }
 }
