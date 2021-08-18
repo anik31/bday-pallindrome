@@ -103,9 +103,48 @@ function nextPallindrome(date){
     while(true){
         count++;
         if (checkPallindromeAllFormats(nextDate)){
-            return {count,nextDate};
+            return {count,day : nextDate.day,month:nextDate.month,year:nextDate.year};
         }
         nextDate = getNextDate(nextDate);
+    } 
+}
+
+function getPrevDate(date){
+    var day = date.day-1;
+    var month = date.month;
+    var year = date.year;
+    var months = [31,28,31,30,31,30,31,31,30,31,30,31];
+    if(day == 0){
+        month--;
+        if(month == 0){
+            month = 12;
+            day = 31;
+            year--;
+        }else if(month == 2){
+            if(checkLeapYear(year)){
+                day = 29;
+            }else{
+                day = 28;
+            }
+        }else{
+            day = months[month-1];
+        }
+    }
+    return {
+        day:day,
+        month:month,
+        year:year
+    }
+}
+function prevPallindrome(date){
+    var prevDate = getPrevDate(date);
+    var count = 0;
+    while(true){
+        count++;
+        if (checkPallindromeAllFormats(prevDate)){
+            return {count,day :prevDate.day,month:prevDate.month,year:prevDate.year};
+        }
+        prevDate = getPrevDate(prevDate);
     } 
 }
 
@@ -123,7 +162,9 @@ function clickHandler(){
         }
         else{
             var nextPallindromeDate = nextPallindrome(date);
-            output.innerText = `😐 Oops!! your bday is not pallindrome. The next pallindrome date is ${nextPallindromeDate.nextDate.day}-${nextPallindromeDate.nextDate.month}-${nextPallindromeDate.nextDate.year}. You missed it by ${nextPallindromeDate.count} days. 😐`
+            var prevPallindromeDate = prevPallindrome(date);
+            var nearestPallindromeDate = nextPallindromeDate.count > prevPallindromeDate.count ? prevPallindromeDate : nextPallindromeDate;
+            output.innerText = `😐 Oops!! your bday is not pallindrome. The next pallindrome date is ${nearestPallindromeDate.day}-${nearestPallindromeDate.month}-${nearestPallindromeDate.year}. You missed it by ${nearestPallindromeDate.count} days. 😐`
             outputImg.src = "/images/sad.svg";
         }
     }
