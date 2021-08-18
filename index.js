@@ -164,7 +164,7 @@ function clickHandler(){
             var nextPallindromeDate = nextPallindrome(date);
             var prevPallindromeDate = prevPallindrome(date);
             var nearestPallindromeDate = nextPallindromeDate.count > prevPallindromeDate.count ? prevPallindromeDate : nextPallindromeDate;
-            output.innerText = `😐 Oops!! your bday is not pallindrome. The next pallindrome date is ${nearestPallindromeDate.day}-${nearestPallindromeDate.month}-${nearestPallindromeDate.year}. You missed it by ${nearestPallindromeDate.count} days. 😐`
+            output.innerText = `😐 Oops!! your bday is not pallindrome. The nearest pallindrome date is ${nearestPallindromeDate.day}-${nearestPallindromeDate.month}-${nearestPallindromeDate.year}. You missed it by ${nearestPallindromeDate.count} days. 😐`
             outputImg.src = "/images/sad.svg";
         }
     }
