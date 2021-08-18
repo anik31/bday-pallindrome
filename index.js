@@ -2,6 +2,7 @@ const dob = document.querySelector("#dob");
 const btnCheck = document.querySelector("#btn-check");
 const output = document.querySelector("#output");
 const outputImg = document.querySelector("#output-img");
+const processing = document.querySelector("#process");
 
 function strReverse(strVar){
     return strVar.split("").reverse().join("");
@@ -149,6 +150,8 @@ function prevPallindrome(date){
 }
 
 function clickHandler(){
+    output.innerText = "";
+    outputImg.src = "";
     if (dob.value != ""){
         var dateSplit = dob.value.split("-");
         var date = {
@@ -156,17 +159,21 @@ function clickHandler(){
             month : Number(dateSplit[1]),
             year : Number(dateSplit[0])
         }
-        if (checkPallindromeAllFormats(date)){
-            output.innerText = "🥳 Yay!! Your bday is pallindrome 🥳";
-            outputImg.src = "/images/happy.svg";
-        }
-        else{
-            var nextPallindromeDate = nextPallindrome(date);
-            var prevPallindromeDate = prevPallindrome(date);
-            var nearestPallindromeDate = nextPallindromeDate.count > prevPallindromeDate.count ? prevPallindromeDate : nextPallindromeDate;
-            output.innerText = `😐 Oops!! your bday is not pallindrome. The nearest pallindrome date is ${nearestPallindromeDate.day}-${nearestPallindromeDate.month}-${nearestPallindromeDate.year}. You missed it by ${nearestPallindromeDate.count} days. 😐`
-            outputImg.src = "/images/sad.svg";
-        }
+        processing.style.display = "block";
+        setTimeout(()=>{
+            processing.style.display = "none";
+            if (checkPallindromeAllFormats(date)){
+                output.innerText = "🥳 Yay!! Your bday is pallindrome 🥳";
+                outputImg.src = "/images/happy.svg";
+            }
+            else{
+                var nextPallindromeDate = nextPallindrome(date);
+                var prevPallindromeDate = prevPallindrome(date);
+                var nearestPallindromeDate = nextPallindromeDate.count > prevPallindromeDate.count ? prevPallindromeDate : nextPallindromeDate;
+                output.innerText = `😐 Oops!! your bday is not pallindrome. The nearest pallindrome date is ${nearestPallindromeDate.day}-${nearestPallindromeDate.month}-${nearestPallindromeDate.year}. You missed it by ${nearestPallindromeDate.count} days. 😐`
+                outputImg.src = "/images/sad.svg";
+            }
+        },4000);  
     }
     else{
         output.innerText = "Please enter your birthdate to continue.";

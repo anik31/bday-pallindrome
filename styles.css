@@ -42,3 +42,7 @@ button{
 img{
     width: 200px;
 }
+lottie-player{
+    margin: auto;
+    display: none;
+}
