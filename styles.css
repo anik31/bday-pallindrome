@@ -35,10 +35,10 @@ button{
     font-size: larger;
     font-weight: bold;
     color: #FCA5A5;
-    margin: 2rem auto;
+    margin: 1rem auto;
 }
 img{
-    width: 200px;
+    width: 170px;
 }
 lottie-player{
     margin: auto;
@@ -61,4 +61,23 @@ input{
     border-radius: 1rem;
     border: 1px solid #FCA5A5;
     font-size: 17px;
+    text-align: center;
+}
+ul{
+    padding-inline-start: 0;
+}
+.fab,.fas{
+    font-size: 30px;
+    color: #FCA5A5;
+    margin: 0 0.5rem;
+}
+footer{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+.list-item-inline{
+    display: inline;
+    padding: 0rem 0.5rem;
 }
